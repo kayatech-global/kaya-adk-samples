@@ -1,0 +1,160 @@
+[
+  {
+    "id": "approve_standard_review",
+    "title": "Clean applicant, officer approves",
+    "message": "Hi, I'd like to open a Savings Account. My name is Arturo Conroy, ID number 57-607128-154274-1, email arturo.conroy@example.com",
+    "replies": [
+      "Proceed",
+      "Approve"
+    ],
+    "steps": [
+      "extract_kyc_intake",
+      "look_up_id_registry",
+      "retrieve_country_risk_context",
+      "assess_kyc_risk",
+      "compliance_approval_review",
+      "create_active_account",
+      "summarize_opened_account"
+    ],
+    "recommendation": "APPROVE",
+    "account_created": true
+  },
+  {
+    "id": "reject_inactive_id",
+    "title": "Registry ID is INACTIVE",
+    "message": "Please open a Savings Account for Denise Leuschke, ID number 82-407104-795618-5",
+    "replies": [
+      "Proceed"
+    ],
+    "steps": [
+      "extract_kyc_intake",
+      "look_up_id_registry",
+      "return_rejection_or_stop_decision"
+    ],
+    "recommendation": "REJECT",
+    "account_created": false
+  },
+  {
+    "id": "reject_name_mismatch",
+    "title": "Name does not match the registry",
+    "message": "Open a Current Account for Jane Doe, ID 53-856129-337430-4, jane.doe@example.com",
+    "replies": [
+      "Proceed"
+    ],
+    "steps": [
+      "extract_kyc_intake",
+      "look_up_id_registry",
+      "return_rejection_or_stop_decision"
+    ],
+    "recommendation": "REJECT",
+    "account_created": false
+  },
+  {
+    "id": "reject_unknown_id",
+    "title": "ID not in the registry",
+    "message": "I want to open a Savings Account. Name: Sam Taylor, ID 12-345678-901234-5",
+    "replies": [
+      "Proceed"
+    ],
+    "steps": [
+      "extract_kyc_intake",
+      "look_up_id_registry",
+      "return_rejection_or_stop_decision"
+    ],
+    "recommendation": "REJECT",
+    "account_created": false
+  },
+  {
+    "id": "reject_no_details",
+    "title": "No name or ID given",
+    "message": "Hi",
+    "replies": [
+      "Proceed"
+    ],
+    "steps": [
+      "extract_kyc_intake",
+      "look_up_id_registry",
+      "return_rejection_or_stop_decision"
+    ],
+    "recommendation": "REJECT",
+    "account_created": false
+  },
+  {
+    "id": "officer_stops_review",
+    "title": "Officer stops at the compliance review",
+    "message": "Open a Savings Account for Rufus Nikolaus, ID 56-732348-529620-7",
+    "replies": [
+      "Proceed",
+      "Stop - documents are incomplete",
+      "Proceed"
+    ],
+    "steps": [
+      "extract_kyc_intake",
+      "look_up_id_registry",
+      "retrieve_country_risk_context",
+      "assess_kyc_risk",
+      "compliance_approval_review",
+      "return_rejection_or_stop_decision"
+    ],
+    "recommendation": "REJECT",
+    "account_created": false
+  },
+  {
+    "id": "officer_asks_then_approves",
+    "title": "Officer asks a question, then approves",
+    "message": "Open a Money Market Account for Vernon Effertz III, ID 14-617867-064285-8, vernon.effertz@example.com",
+    "replies": [
+      "Proceed",
+      "What address is on the registry record?",
+      "Proceed",
+      "Approve"
+    ],
+    "steps": [
+      "extract_kyc_intake",
+      "look_up_id_registry",
+      "retrieve_country_risk_context",
+      "assess_kyc_risk",
+      "compliance_approval_review",
+      "create_active_account",
+      "summarize_opened_account"
+    ],
+    "recommendation": "APPROVE",
+    "account_created": true
+  },
+  {
+    "id": "edd_review_for_pep",
+    "title": "Politically exposed person: enhanced due diligence",
+    "message": "Open a Savings Account for Joann Armstrong, ID 88-151470-757212-3. Note for compliance: she is a politically exposed person (PEP).",
+    "replies": [
+      "Proceed",
+      "Approve"
+    ],
+    "steps": [
+      "extract_kyc_intake",
+      "look_up_id_registry",
+      "retrieve_country_risk_context",
+      "assess_kyc_risk",
+      "enhanced_due_diligence_review",
+      "create_active_account",
+      "summarize_opened_account"
+    ],
+    "recommendation": "APPROVE WITH EDD",
+    "account_created": true
+  },
+  {
+    "id": "stopped_at_review_gate",
+    "title": "Reviewer stops the run at the gate before the review",
+    "message": "Open a Savings Account for Keith Mann, ID 53-856129-337430-4",
+    "replies": [
+      "Stop"
+    ],
+    "steps": [
+      "extract_kyc_intake",
+      "look_up_id_registry",
+      "retrieve_country_risk_context",
+      "assess_kyc_risk"
+    ],
+    "recommendation": "APPROVE",
+    "account_created": false
+  }
+]

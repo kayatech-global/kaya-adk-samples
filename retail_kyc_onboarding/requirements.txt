@@ -1,0 +1,22 @@
+# Runtime dependencies of the agent; google-adk is pinned to the version this export was built for.
+# It lives in the agent folder because `adk deploy` installs the requirements.txt it finds there.
+# The engine is vendored in _engine/: nothing here depends on the platform that generated this export.
+aiosqlite>=0.20
+fastapi>=0.115
+google-adk==2.12.0
+google-cloud-secret-manager>=2.20
+httpx>=0.27
+litellm>=1.50
+mcp<2,>=1.23
+opentelemetry-exporter-otlp-proto-http>=1.27
+opentelemetry-sdk>=1.27
+packaging>=23
+pydantic>=2.7
+pydantic-settings>=2.4
+pyjwt[crypto]>=2.9
+python-dotenv>=1.0
+pyyaml>=6
+sqlalchemy[asyncio]>=2.0
+sse-starlette>=2
+uvicorn>=0.30
+

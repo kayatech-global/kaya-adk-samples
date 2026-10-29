@@ -1,0 +1,15 @@
+# Local environment and caches
+.venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.DS_Store
+
+# The agent's local keys and ADK's session store (also in retail_kyc_onboarding/.gitignore, which `adk deploy` reads)
+.env
+.adk/
+
+# deployment/deploy.py writes the files of a target under build/deploy/<target>/
+build/

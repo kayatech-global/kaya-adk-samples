@@ -1,0 +1,5 @@
+# Everything to run the agent and its tests: `pip install -r requirements.txt` from the repository root.
+# The agent's runtime dependencies stay in retail_kyc_onboarding/requirements.txt, where `adk deploy` looks for them.
+-r retail_kyc_onboarding/requirements.txt
+pytest==9.2.0
+pytest-asyncio==1.4.1

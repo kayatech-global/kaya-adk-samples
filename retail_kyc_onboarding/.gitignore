@@ -1,0 +1,6 @@
+# Kept out of git and out of every `adk deploy` image (ADK copies this folder and honours this file).
+.env
+.adk/
+.venv/
+__pycache__/
+*.py[cod]

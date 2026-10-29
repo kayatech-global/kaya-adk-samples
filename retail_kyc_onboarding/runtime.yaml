@@ -1,0 +1,45 @@
+# Which provider serves each factory kind, and which entity comes from where. Docs: docs/how-to/configure-providers.md.
+#
+# To adapt it, edit this file only:
+#   mode          the profile that runs (FLOW_PROVIDER_MODE wins)
+#   plugins       Python modules to import so the provider classes they define (@register) can be named below
+#   factories     the provider of each kind: a name, a class path "pkg.module:Class", or {provider: <name>, <setting>: <value>}
+#                 `all: <name>` makes every kind that has a provider of that name use it; an explicit kind line wins
+#   content       per prompt, model or tool id: `provider` routes that one entity, the other keys override its fields
+# ${env:NAME} and ${env:NAME:-fallback} read the environment (and the dotenv file beside settings.py) when the profile is selected.
+# Code in settings.build_providers() and the settings.py maps still win over this file.
+mode: ${env:FLOW_PROVIDER_MODE:-default}
+
+plugins: [retail_kyc_onboarding.arc_providers]  # the placeholder `arc` providers; add modules of your own here
+
+provider-profile:
+  default:
+    config: {}
+    factories:
+      secret: env
+      credentials: none
+      authn: anonymous
+      authz: allow_all
+      prompt: content
+      model: litellm
+      api: http
+      mcp: mcp_client
+      session: uri
+      runstore: uri
+      adk_plugin: none
+      telemetry: console
+      approval_policy: by_tool
+      approver_resolver: standard
+      approval_channel: adk_request_input
+
+  # Optional extension point for ARC (README, "Extending for ARC"), unused unless selected: every kind that has an `arc` provider in arc_providers.py uses it,
+  # the other kinds stay as in `default`. The `arc` providers are empty placeholders until you implement them.
+  arc:
+    config: {}  # given to every provider named `arc`: the fields you declare on ArcSettings, e.g. {url: "${env:ARC_BASE_URL}"}
+    factories:
+      all: arc
+    # content:                     # one entity from somewhere else, or a field changed, without code:
+    #   prompts:
+    #     kyc_risk_agent_prompt: {provider: content}                 # this prompt stays the exported one
+    #   tools:
+    #     retail_kyc_id_registry_lookup: {provider: http}            # this tool is called directly
