@@ -13,3 +13,6 @@ __pycache__/
 
 # deployment/deploy.py writes the files of a target under build/deploy/<target>/
 build/
+
+# Demo video
+demo_video/

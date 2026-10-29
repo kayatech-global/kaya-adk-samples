@@ -5,6 +5,12 @@ A Sample Google ADK agent that onboards a retail banking customer: it extracts t
 **Source:** the Kaya workflow "Retail KYC Onboarding", exported to Google ADK `2.12.0`.
 It runs on its own: Python and the packages in `retail_kyc_onboarding/requirements.txt`, with no connection to Kaya at run time.
 
+## Demo
+
+<!-- Replace YOUTUBE_VIDEO_ID with the ID of the uploaded video. -->
+[Watch the demo on YouTube](https://youtu.be/7l4UAnnrB7Y) (7 minutes).
+It clones the repository, sets it up as in the [Quick start](#quick-start), runs a flow in the ADK web UI, and walks through the docs for [extending it for ARC](#extensibility---support-for-enterprise-frameworks-such-as-arc).
+
 ## About this export: Step 1 of 2
 
 This is a lightweight, independently executable Google ADK agent.
